@@ -7,7 +7,7 @@ const LaunchRequestHandler = {
         return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speechText = "Welcome to Weather Reporter, you can say what's the weather in Seattle";
+        const speechText = "Welcome to Weather Reporter, you can say what's the forecast for Seattle";
         return handlerInput.responseBuilder
             .speak(speechText)
             .reprompt(speechText)
@@ -44,7 +44,7 @@ const HelpIntentHandler = {
             && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speechText = "Welcome to Weather Reporter, you can say what's the weather in Seattle";
+        const speechText = "Welcome to Weather Reporter, you can say what's the forecast for Seattle";
         return handlerInput.responseBuilder
             .speak(speechText)
             .withShouldEndSession(false)
@@ -101,6 +101,7 @@ exports.handler = Alexa.SkillBuilders
         WeatherForecastIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
-        SessionEndedRequestHandler
+        SessionEndedRequestHandler,
+        ErrorHandler
     )
     .lambda();
